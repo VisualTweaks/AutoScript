@@ -1,5 +1,3 @@
-#!/bin/bash
-
 echo "
 ████████╗██████╗  █████╗  ██████╗██╗  ██╗███████╗
 ╚══██╔══╝██╔══██╗██╔══██╗██╔════╝██║ ██╔╝██╔════╝
@@ -7,20 +5,16 @@ echo "
    ██║   ██╔══██╗██╔══██║██║     ██╔═██╗ ╚════██║
    ██║   ██║  ██║██║  ██║╚██████╗██║  ██╗███████║
    ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝╚══════╝ "
-
-echo "Would you like to ping an ip (Y/N): "
+echo "Would you like to Nikto a website (Y/N): "
 read choice
 if [[ $choice == y* ]]; then
-	echo "Enter IP"
-	read ip
-sleep 3
+	read website
+	nikto -host $website
 	clear
-	ping -c 5 $ip
-	clear
-else 
+else
 	echo 'goodbye'
 	clear
-fi 
+fi
 
 echo "
 ████████╗██████╗  █████╗  ██████╗██╗  ██╗███████╗
@@ -46,10 +40,11 @@ echo "
    ██║   ██╔══██╗██╔══██║██║     ██╔═██╗ ╚════██║
    ██║   ██║  ██║██║  ██║╚██████╗██║  ██╗███████║
    ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝╚══════╝ "
-echo "Would you like to ping3 (Y/N): "
+
+echo "Would you like to do a dirb (Y/N): "
 read choice
 if [[ $choice == y* ]]; then
-	hping3 --flood -S -d 1960 $ip
+	dirb $website > dirb.txt
 else 
 	echo 'goodbye'
 	clear
